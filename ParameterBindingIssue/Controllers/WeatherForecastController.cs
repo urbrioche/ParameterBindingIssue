@@ -6,12 +6,23 @@ namespace ParameterBindingIssue.Controllers;
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
-    [HttpPost("IEnumerable")]
-    public IActionResult PostIEnumerable(IEnumerable<WeatherForecast> forecasts) => forecasts.Any() ? Ok() : BadRequest();
+	[HttpPost("Array")]
+	public IActionResult PostIEnumerable(WeatherForecast[] forecasts) =>
+		 forecasts.Any() ? Ok() : BadRequest();
 
-    [HttpPost("WithAttribute")]
-    public IActionResult PostWithAttribute([FromBody] IEnumerable<WeatherForecast> forecasts) => forecasts.Any() ? Ok() : BadRequest();
+	[HttpPost("IEnumerable")]
+	public IActionResult PostIEnumerable(IEnumerable<WeatherForecast> forecasts) =>
+		 forecasts.Any() ? Ok() : BadRequest();
 
-    [HttpPost("List")]
-    public IActionResult PostList(List<WeatherForecast> forecasts) => forecasts.Any() ? Ok() : BadRequest();
+	[HttpPost("IReadOnlyList")]
+	public IActionResult PostIEnumerable(IReadOnlyList<WeatherForecast> forecasts) =>
+		 forecasts.Any() ? Ok() : BadRequest();
+
+	[HttpPost("WithAttribute")]
+	public IActionResult PostWithAttribute([FromBody] IEnumerable<WeatherForecast> forecasts) =>
+		 forecasts.Any() ? Ok() : BadRequest();
+
+	[HttpPost("List")]
+	public IActionResult PostList(List<WeatherForecast> forecasts) =>
+		 forecasts.Any() ? Ok() : BadRequest();
 }
