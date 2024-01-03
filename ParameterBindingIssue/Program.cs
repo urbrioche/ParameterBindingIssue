@@ -1,8 +1,12 @@
+using Autofac.Extensions.DependencyInjection;
 using ParameterBindingIssue;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+
+// following line is making some trouble
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
 var app = builder.Build();
 
